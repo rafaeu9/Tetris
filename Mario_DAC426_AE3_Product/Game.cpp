@@ -6,6 +6,7 @@ using namespace std;
 Game::Game()
 {
 	Load_Map();
+	Score.SDisplay();
 }
 
 
@@ -17,12 +18,10 @@ void Game::Load_Map()
 {
 	
 
-	int X;
-	int Y;
-	
-	ifstream input;
+	Coordinate MapWalls;
 
-	
+	ifstream	input;
+
 	input.open("Map.txt");
 	if (input.bad())
 		cout << "ERROR OPEN Map.txt";
@@ -36,9 +35,9 @@ void Game::Load_Map()
 
 			stringstream ss{ text_from_file };
 
-			ss >> X >> Y;			
+			ss >> MapWalls.X >> MapWalls.Y;
 
-			Map.push_back(Coordinate(X,Y+2));
+			Map.push_back(Coordinate(MapWalls.X, MapWalls.Y+2));
 
 			
 		}	
@@ -46,7 +45,7 @@ void Game::Load_Map()
 	   	
 	for (size_t i = 0; i < Map.size(); i++)
 	{
-		display.WriteChar(Map[i], ' ', BACKGROUND_INTENSITY | FOREGROUND_INTENSITY | BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | FOREGROUND_BLUE);
+		display.WriteChar(Map[i], ' ', WHITE_ON_WHITE);
 
 	}
 	
@@ -56,14 +55,13 @@ void Game::Load_Map()
 void Game::Load_Shapes()
 {
 	string	name;
-	string	color;
+	WORD	color;
 	char	character;
+	std::vector<Coordinate> Shapechar;
+	int length;
+	Coordinate pos;
 
-	int X;
-	int Y;
-
-	ifstream input;
-
+	ifstream	input;
 
 	input.open("Shapes.txt");
 	if (input.bad())
@@ -79,10 +77,25 @@ void Game::Load_Shapes()
 
 	while (!input.eof()) {
 
-		ss >> X >> Y;
+		
 
-		Map.push_back(Coordinate(X, Y + 2));
+		ss >> name >> color >> character >> length;
+
+		for (size_t i = 0; i < length; i++)
+		{
+			ss >> pos.X >> pos.Y;
+			
+			Shapechar.push_back(pos);			
+		}
+		
+
+		
 	}
 
 	input.close();
+}
+
+void Game::ChooseShape()
+{
+
 }

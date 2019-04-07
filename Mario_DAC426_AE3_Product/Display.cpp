@@ -36,12 +36,12 @@ bool	Display::setup()
 	return true;
 }
 
-void	Display::WriteChar(Coordinate pos, char writeChar, WORD attribute)
+void	Display::WriteChar(Coordinate pos, char writeChar, WORD attribute )
 {
 	DWORD d;
 	COORD wpos;
-	wpos.X = pos.X();
-	wpos.Y = pos.Y();
+	wpos.X = pos.X;
+	wpos.Y = pos.Y;
 
 	WriteConsoleOutputAttribute(m_output, &attribute, 1, wpos, &d);
 	WriteConsoleOutputCharacter(m_output, &writeChar, 1, wpos, &d);
@@ -51,8 +51,8 @@ void	Display::WriteMenssage(Coordinate pos, std::string& writemessange)
 {
 	DWORD d;
 	COORD wpos;
-	wpos.X = pos.X();
-	wpos.Y = pos.Y();	
+	wpos.X = pos.X;
+	wpos.Y = pos.Y;	
 	WriteConsoleOutputCharacter(m_output, writemessange.c_str(), writemessange.length(), wpos, &d);
 }
 

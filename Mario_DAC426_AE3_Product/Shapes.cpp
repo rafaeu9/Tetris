@@ -16,10 +16,7 @@ void Shapes::Move()
 
 	for (int i = 0 ; i == m_Format.size(); i++)
 	{
-		Coordinate pix{ m_Format[i] };
-		pix.Add(m_Coordinate);
-
-		m_Display.WriteChar(pix, m_Character, m_Color);
+				m_Display.WriteChar(m_Format[i], m_Character, m_Color);
 	}
 
 	

@@ -4,6 +4,7 @@
 #include <conio.h>
 #include <string>
 #include "Coordinate.h"
+#include "ConsoleAttributes.h"
 
 
 class Display
@@ -12,7 +13,7 @@ public:
 	Display();
 	~Display();
 
-	void		WriteChar(const Coordinate pos, char writeChar, WORD attribute);
+	void		WriteChar(Coordinate pos, char writeChar, WORD attribute = (WORD)WHITE_ON_WHITE);
 
 	void		WriteMenssage(const Coordinate pos, std::string& writemessange);
 
