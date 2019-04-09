@@ -1,10 +1,15 @@
 #pragma once
+#include <iostream> 
 #include <string>
 #include <vector>
 #include <Windows.h>
+#include <time.h>
+
 
 #include "Coordinate.h"
 #include "Display.h"
+
+using namespace std;
 
 class Shapes
 {
@@ -14,6 +19,7 @@ public:
 
 	void Move();
 
+	
 private:
 
 	Coordinate		m_Coordinate;
@@ -22,8 +28,10 @@ private:
 	WORD			m_Color;
 	char			m_Character;
 	Display			m_Display;
+	int				Move_Speed{ 1 };
 
 	void Colition();
 	void ScreenDisplay();
+	void ScreenDelete();
 };
 

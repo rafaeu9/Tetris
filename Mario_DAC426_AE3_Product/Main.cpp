@@ -13,10 +13,7 @@
 int main()
 {
 
-	Game Game;
-	
-
-	
+	Game Game;	
 
 	_getch();
 

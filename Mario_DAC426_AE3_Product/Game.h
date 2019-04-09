@@ -16,24 +16,17 @@ public:
 	Game();
 	~Game();
 
-
-
-private:
+protected:
 
 	Score		Score;
 	Display		display;
-	Shapes		CurrentShape;
-	std::vector<Coordinate> Map;
-	std::vector<Shapes> Shapes;
 	
 	
+	std::vector<Coordinate> m_Map;
+	std::vector<Shapes> m_Shapes;
 	
 	void Load_Map();
 	void Load_Shapes();
-
-	void ChooseShape();
-
-	
-
+	void Choose_Shape();
 };
 
