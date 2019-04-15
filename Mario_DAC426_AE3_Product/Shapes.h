@@ -14,24 +14,50 @@ using namespace std;
 class Shapes
 {
 public:
-	Shapes(std::string Inp_Name, std::vector<Coordinate> Inp_Format, WORD Color, char Inp_Character);
+	// Create a new shape (Name of the shape, format in coordinate of the shape, color, character)
+	Shapes(std::string Inp_Name, std::vector<Coordinate> Inp_Format, WORD Color, char Inp_Character);	
 	~Shapes();
 
+	// Move shape
 	void Move();
 
 	
 private:
 
 	Coordinate		m_Coordinate;
+	// Name of the shape
 	std::string		m_Name;
+
+	// Format of the shape
 	std::vector<Coordinate> m_Format;
+
+	std::vector<Coordinate> original_Format;
+
+	// Color of the shape
 	WORD			m_Color;
+
+	// Character inside of the shape
 	char			m_Character;
+
 	Display			m_Display;
+	
+	// Movement speed of the shape
 	int				Move_Speed{ 1 };
 
+	int rotation{ 0 };
+	int Rot_Ajust_X{ 0 };
+	int Rot_Ajust_Y{ 0 };
+
+	// Detect Colition
 	void Colition();
+
+	// Display Shape on the Screen
 	void ScreenDisplay();
-	void ScreenDelete();
+
+	// Delete Shape from the Screen
+	void ScreenDelete();	
+
+	// Get input to move shape
+	void UserInput();		
 };
 

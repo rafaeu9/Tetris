@@ -5,10 +5,12 @@ using namespace std;
 
 Game::Game()
 {
-	Load_Map();
-	Score.SDisplay();
-	Load_Shapes();
 	
+	Load_Map();
+	
+	Score.SDisplay();
+
+	Load_Shapes();	
 	
 	m_Shapes[0].Move();
 }
@@ -77,19 +79,23 @@ void Game::Load_Shapes()
 
 
 	while (!input.eof()){
-
+		
+		Shapechar.clear();
 
 		getline(input, text_from_file);
 
 		stringstream ss{ text_from_file };
 		
-		ss >> name >> color >> character >> length;
+		ss >> name >> color >> character;
 
 	
 
-		for (int i = 0; i < length; i++)
+		while (!input.eof()) 
 		{
 			getline(input, text_from_file);
+
+			if (text_from_file == "-")
+				break;
 
 			stringstream ss{ text_from_file };
 
@@ -101,7 +107,7 @@ void Game::Load_Shapes()
 		}
 
 		
-		m_Shapes.push_back(Shapes(name, Shapechar, color, character));
+		m_Shapes.push_back(Shapes(name, Shapechar, WHITE_ON_WHITE, character));
 		
 	 } 
 

@@ -21,12 +21,19 @@ protected:
 	Score		Score;
 	Display		display;
 	
-	
+	// Format of the Map
 	std::vector<Coordinate> m_Map;
+
+	// Loded shapes
 	std::vector<Shapes> m_Shapes;
 	
+	// Get Map from Map.txt and display 
 	void Load_Map();
+
+	// Get Shapes from Shapes.txt
 	void Load_Shapes();
+
+	// Choose a random Shape
 	void Choose_Shape();
 };
 

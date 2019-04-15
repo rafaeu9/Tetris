@@ -36,6 +36,7 @@ bool	Display::setup()
 	return true;
 }
 
+// Display any character
 void	Display::WriteChar(Coordinate pos, char writeChar, WORD attribute )
 {
 	DWORD d;
@@ -47,6 +48,7 @@ void	Display::WriteChar(Coordinate pos, char writeChar, WORD attribute )
 	WriteConsoleOutputCharacter(m_output, &writeChar, 1, wpos, &d);
 }
 
+// Display any menssage
 void	Display::WriteMenssage(Coordinate pos, std::string& writemessange)
 {
 	DWORD d;
