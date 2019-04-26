@@ -1,15 +1,1 @@
-﻿  Coordinate.cpp
-  Display.cpp
-C:\Users\rafae\Desktop\Mario_DAC426_AE3_Product-master\Mario_DAC426_AE3_Product\Display.cpp(58): warning C4267: 'argument': conversion from 'size_t' to 'DWORD', possible loss of data
-  Game.cpp
-C:\Users\rafae\Desktop\Mario_DAC426_AE3_Product-master\Mario_DAC426_AE3_Product\Game.cpp(29): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\rafae\Desktop\Mario_DAC426_AE3_Product-master\Mario_DAC426_AE3_Product\Game.cpp(76): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\rafae\Desktop\Mario_DAC426_AE3_Product-master\Mario_DAC426_AE3_Product\Game.cpp(81): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\rafae\Desktop\Mario_DAC426_AE3_Product-master\Mario_DAC426_AE3_Product\Game.cpp(86): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\rafae\Desktop\Mario_DAC426_AE3_Product-master\Mario_DAC426_AE3_Product\Game.cpp(91): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\rafae\Desktop\Mario_DAC426_AE3_Product-master\Mario_DAC426_AE3_Product\Game.cpp(105): warning C4101: 'length': unreferenced local variable
-  Main.cpp
-  Score.cpp
-  Shapes.cpp
-  Generating Code...
-  Mario_DAC426_AE3_Product.vcxproj -> C:\Users\rafae\Desktop\Mario_DAC426_AE3_Product-master\x64\Debug\Mario_DAC426_AE3_Product.exe
+﻿  Mario_DAC426_AE3_Product.vcxproj -> C:\Users\rafae\Source\Repos\rafaeu9\Mario_DAC426_AE3_Product\x64\Debug\Mario_DAC426_AE3_Product.exe

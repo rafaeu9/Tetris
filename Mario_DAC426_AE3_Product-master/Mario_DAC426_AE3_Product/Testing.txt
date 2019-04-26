@@ -1,5 +1,0 @@
-SQUARE 10 10 49 *
-L 1 20 10 36 W
-T 2 5 20 164 @
-TEXT 4 4 9 Dave was here
-BAR 19 0 17 b

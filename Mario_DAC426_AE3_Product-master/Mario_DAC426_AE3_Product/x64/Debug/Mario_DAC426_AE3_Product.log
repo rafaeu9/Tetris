@@ -1,8 +1,0 @@
-﻿  Game.cpp
-c:\users\4cunhm52\downloads\mario_dac426_ae3_product-master\mario_dac426_ae3_product\game.cpp(27): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-c:\users\4cunhm52\downloads\mario_dac426_ae3_product-master\mario_dac426_ae3_product\game.cpp(71): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-c:\users\4cunhm52\downloads\mario_dac426_ae3_product-master\mario_dac426_ae3_product\game.cpp(76): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-c:\users\4cunhm52\downloads\mario_dac426_ae3_product-master\mario_dac426_ae3_product\game.cpp(81): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-c:\users\4cunhm52\downloads\mario_dac426_ae3_product-master\mario_dac426_ae3_product\game.cpp(86): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-c:\users\4cunhm52\downloads\mario_dac426_ae3_product-master\mario_dac426_ae3_product\game.cpp(100): warning C4101: 'length': unreferenced local variable
-  Mario_DAC426_AE3_Product.vcxproj -> C:\Users\4cunhm52\Downloads\Mario_DAC426_AE3_Product-master\x64\Debug\Mario_DAC426_AE3_Product.exe
