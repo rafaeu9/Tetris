@@ -10,9 +10,9 @@ Game::Game()
 	
 	Score.SDisplay();
 
-	Load_Shapes();	
+	Load_Shapes();		
 	
-	m_Shapes[0].Move();
+	
 }
 
 
@@ -20,39 +20,77 @@ Game::~Game()
 {
 }
 
-void Game::Load_Map()
+void Game::Play_Game()
 {
-	Coordinate MapWalls;
+	while (true) {
+	
 
-	ifstream	input;
 
-	input.open("Map.txt");
-	if (input.bad())
-		cout << "ERROR OPEN Map.txt";
+		Shapes Actual_Shape = m_Shapes[Random_Shape(m_Shapes.size() - 1)];
+	
+		Actual_Shape.Move();
 		
-	while (!input.eof()){
-			
-
-			string text_from_file;
-
-			getline(input, text_from_file);
-
-			stringstream ss{ text_from_file };
-
-			ss >> MapWalls.X >> MapWalls.Y;
-
-			m_Map.push_back(Coordinate(MapWalls.X, MapWalls.Y+2));
-
-			
-		}	
-	input.close();
-	   	
-	for (size_t i = 0; i < m_Map.size(); i++)
-	{
-		display.WriteChar(m_Map[i], ' ', WHITE_ON_WHITE);
+		m_save_shapes.push_back(Actual_Shape);
 
 	}
+
+}
+
+void Game::Load_Map()
+{
+	//Coordinate MapWalls;
+	//
+	//ifstream	input;
+	//
+	//input.open("Map.txt");
+	//if (input.bad())
+	//	cout << "ERROR OPEN Map.txt";
+	//	
+	//while (!input.eof()){
+	//		
+	//
+	//		string text_from_file;
+	//
+	//		getline(input, text_from_file);
+	//
+	//		stringstream ss{ text_from_file };
+	//
+	//		ss >> MapWalls.X >> MapWalls.Y;
+	//
+	//		m_Map.push_back(Coordinate(MapWalls.X, MapWalls.Y+2));
+	//
+	//		
+	//	}	
+	//input.close();
+	//   	
+	//for (size_t i = 0; i < m_Map.size(); i++)
+	//{
+	//	display.WriteChar(m_Map[i], '#', WHITE_ON_BLACK);
+	//
+	//}
+		
 	
+	
+	for (size_t i = 0; i < map_width; i++)
+	{
+		display.WriteChar(Coordinate(i, 2) , (char)178, WHITE_ON_BLACK);
+	}
+	
+	for (size_t i = 0; i < map_width; i++)
+	{
+		display.WriteChar(Coordinate(i, map_height+2), (char)178, WHITE_ON_BLACK);
+	}
+	
+	for (size_t i = 0; i < map_height; i++)
+	{
+		display.WriteChar(Coordinate(0, i+2), (char)178, WHITE_ON_BLACK);
+	}
+	
+	for (size_t i = 0; i < map_height +1; i++)
+	{
+		display.WriteChar(Coordinate(map_width, i+2), (char)178, WHITE_ON_BLACK);
+	}
+
 
 }
 
@@ -118,4 +156,13 @@ void Game::Load_Shapes()
 void Game::Choose_Shape()
 {
 
+}
+
+int Game::Random_Shape(int high)
+{
+	std::random_device rd;
+	std::mt19937 mt_rand{ rd() };
+	std::uniform_int_distribution<int> uid{ 0,high };
+
+	return uid(mt_rand);
 }

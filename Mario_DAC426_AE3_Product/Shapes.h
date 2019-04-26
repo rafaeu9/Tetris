@@ -16,12 +16,20 @@ class Shapes
 public:
 	// Create a new shape (Name of the shape, format in coordinate of the shape, color, character)
 	Shapes(std::string Inp_Name, std::vector<Coordinate> Inp_Format, WORD Color, char Inp_Character);	
+
 	~Shapes();
 
 	// Move shape
 	void Move();
 
-	
+	bool detect_limit(int CheckPosX, int CheckPosY);
+
+	// Display Shape on the Screen
+	void ScreenDisplay();
+
+	// Delete Shape from the Screen
+	void ScreenDelete();
+
 private:
 
 	Coordinate		m_Coordinate;
@@ -51,13 +59,12 @@ private:
 	// Detect Colition
 	void Colition();
 
-	// Display Shape on the Screen
-	void ScreenDisplay();
-
-	// Delete Shape from the Screen
-	void ScreenDelete();	
+	
 
 	// Get input to move shape
-	void UserInput();		
+	void UserInput();	
+
+	HANDLE ConsoleOutput = GetStdHandle(STD_OUTPUT_HANDLE);
+
 };
 

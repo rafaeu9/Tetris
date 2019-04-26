@@ -15,6 +15,8 @@ int main()
 
 	Game Game;	
 
+	Game.Play_Game();
+
 	_getch();
 
 }

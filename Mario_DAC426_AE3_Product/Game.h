@@ -4,6 +4,7 @@
 #include <conio.h>
 #include <string>
 #include <iostream>
+#include <random>
 
 #include "Score.h"
 #include "Display.h"
@@ -15,6 +16,8 @@ class Game
 public:
 	Game();
 	~Game();
+
+	void Play_Game();
 
 protected:
 
@@ -35,5 +38,14 @@ protected:
 
 	// Choose a random Shape
 	void Choose_Shape();
+
+	int Random_Shape (int high);
+	
+	int map_width{ 11 };
+
+	const int map_height{ 21 };
+	
+
+	std::vector<Shapes> m_save_shapes;
 };
 

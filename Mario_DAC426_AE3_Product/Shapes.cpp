@@ -24,9 +24,11 @@ Shapes::~Shapes()
 {
 }
 
+
 void Shapes::Move()
 {
-	while (true)
+	bool move = true;
+	while (move)
 	{
 		// Detect user input
 		if (_kbhit())
@@ -37,15 +39,45 @@ void Shapes::Move()
 		Sleep(500);	
 		
 		ScreenDelete();
+
+		if (detect_limit(m_Coordinate.X, (m_Coordinate.Y + Move_Speed)))
+			m_Coordinate.Y += Move_Speed;
+		else
+			move = false;
 		
-		m_Coordinate.Y += Move_Speed;
 	}	
+}
+
+bool Shapes::detect_limit(int CheckPosX, int CheckPosY)
+{
+
+	_COORD CheckPos;
+
+	
+
+	char kAnalized[1];	
+
+	// Number Of Characters Read
+	DWORD NumberOfCharsRead = 0;
+
+	for (int i = 0; i < m_Format.size(); i++)
+	{
+		Coordinate pos((m_Format[i].X + CheckPosX), m_Format[i].Y + CheckPosY);
+
+		CheckPos.X = pos.X;
+		CheckPos.Y = pos.Y;
+
+		ReadConsoleOutputCharacter(ConsoleOutput, kAnalized, 1, CheckPos, &NumberOfCharsRead);
+
+		if (kAnalized[0] != ' ')
+			return false;
+	}
+		return true;
+		
 }
 
 void Shapes::ScreenDisplay()
 {
-	
-	
 
 	for (int i = 0; i < m_Format.size(); i++)
 	{
@@ -75,19 +107,22 @@ void Shapes::UserInput()
 	{
 	case 'd':
 
-		// Move left		
+		// Move left	
+		if (detect_limit(m_Coordinate.X + Move_Speed, m_Coordinate.Y ))
 		m_Coordinate.X += Move_Speed;
 
 		break;
 	case 'a':
 
 		// Move right
+		if (detect_limit(m_Coordinate.X - Move_Speed, m_Coordinate.Y))
 		m_Coordinate.X -= Move_Speed;
 
 		break;
 	case 's':
 
 		// Move down
+		if (detect_limit(m_Coordinate.X, (m_Coordinate.Y + Move_Speed)))
 		m_Coordinate.Y += Move_Speed;
 
 		break;
