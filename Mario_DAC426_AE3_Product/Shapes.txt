@@ -1,23 +1,59 @@
-Square BACKGROUND_RED S
-0 0 
-0 1 
-1 0 
-1 1
+Square BACKGROUND_RED
+1 1 
+1 2 
+2 1 
+2 2
 -
-T BACKGROUND_GREEN T
+T BACKGROUND_GREEN
+-1 0
 0 0
-0 1
-0 2
-1 1
--
-L BACKGROUND_GRAY L
-0 2
 1 0
-1 1
-1 2
+0 1
+=
+0 -1
+0 0
+0 1
+-1 0
+=
+-1 0
+0 0
+1 0
+0 -1
+=
+0 -1
+0 0
+0 1
+1 0
 -
-Bar BACKGROUND_BLUE B
+L BACKGROUND_GRAY
+0 -1
+0 0
+0 1
+1 1
+=
+1 0
+0 0
+-1 0
+-1 1
+=
+0 1
+0 0
+0 -1
+-1 -1
+=
+-1 0
+0 0
+1 0
+1 -1
+-
+Bar BACKGROUND_BLUE
+-1 0
+0 0
+1 0
+2 0
+=
+0 -1
 0 0
 0 1
 0 2
-0 3
+-

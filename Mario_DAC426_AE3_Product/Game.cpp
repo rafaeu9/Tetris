@@ -32,6 +32,7 @@ void Game::Play_Game()
 		
 		m_save_shapes.push_back(Actual_Shape);
 
+		
 	}
 
 }
@@ -86,7 +87,7 @@ void Game::Load_Map()
 		display.WriteChar(Coordinate(0, i+2), (char)178, WHITE_ON_BLACK);
 	}
 	
-	for (size_t i = 0; i < map_height +1; i++)
+	for (size_t i = 0; i < map_height + 1; i++)
 	{
 		display.WriteChar(Coordinate(map_width, i+2), (char)178, WHITE_ON_BLACK);
 	}
@@ -96,12 +97,14 @@ void Game::Load_Map()
 
 void Game::Load_Shapes()
 {
-	int X{ 4 };
-	int Y{ 5 };
+	int X{ 0 };
+	int Y{ 0 };
 	string	name;
 	string	color;
+	bool shape_end;
 	char	character;
 	std::vector<Coordinate> Shapechar;
+	std::vector<std::vector<Coordinate>> rotation;
 	int length;
 	Coordinate pos;
 	string text_from_file;
@@ -118,34 +121,42 @@ void Game::Load_Shapes()
 
 	while (!input.eof()){
 		
-		Shapechar.clear();
+		shape_end = true;
+
+		rotation.clear();
 
 		getline(input, text_from_file);
 
 		stringstream ss{ text_from_file };
 		
-		ss >> name >> color >> character;
+		ss >> name >> color;
 
 	
 
-		while (!input.eof()) 
+		while (shape_end)
 		{
-			getline(input, text_from_file);
+			while (!input.eof())
+			{
+				getline(input, text_from_file);
 
-			if (text_from_file == "-")
+				if (text_from_file == "=")
+					break;
+				else if (text_from_file == "-") {
+				shape_end = false;
 				break;
+				}
+				stringstream ss{ text_from_file };
 
-			stringstream ss{ text_from_file };
+				ss >> X >> Y;
 
-			ss >> X >> Y;
-
-			Shapechar.push_back(Coordinate(X, Y));
-
-			
+				Shapechar.push_back(Coordinate(X, Y));
+			}
+			rotation.push_back(Shapechar);
+			Shapechar.clear();
 		}
 
 		
-		m_Shapes.push_back(Shapes(name, Shapechar, WHITE_ON_WHITE, character));
+		m_Shapes.push_back(Shapes(name, rotation, WHITE_ON_WHITE));
 		
 	 } 
 
