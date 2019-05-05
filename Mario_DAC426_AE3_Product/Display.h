@@ -19,6 +19,10 @@ public:
 	// Display a Menssage (Position in coordinate, Menssage)
 	void		WriteMenssage(const Coordinate pos, std::string& writemessange);
 
+	char		ReadChar(Coordinate pos);
+
+	WORD		ReadAttribute(Coordinate pos);
+
 private:
 
 	HANDLE		m_input{ NULL };

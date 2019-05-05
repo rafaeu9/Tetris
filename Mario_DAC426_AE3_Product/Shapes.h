@@ -23,17 +23,6 @@ public:
 	// Move shape
 	void Move();
 
-	bool detect_limit(int CheckPosX, int CheckPosY);
-
-	// Display Shape on the Screen
-	void ScreenDisplay(char c, WORD co);
-
-	// Delete Shape from the Screen
-	void ScreenDelete();
-
-	std::vector<std::vector<Coordinate>> m_rotation;
-
-
 private:
 
 	Coordinate		m_Coordinate;
@@ -50,21 +39,27 @@ private:
 
 	
 	Display			m_Display;
-	
+
+	// Display Shape on the Screen
+	void ScreenDisplay(char c, WORD co);
+
+	// Delete Shape from the Screen
+	void ScreenDelete();
+
 	// Movement speed of the shape
 	int				Move_Speed{ 1 };
 
+	//actual rotation position 
 	int rotation{ 0 };
 
+	//Store of the rotation positions
+	std::vector<std::vector<Coordinate>> m_rotation;
+
+	//rotations possible
 	int max_rotion = m_rotation.size();
 	
-	int Rot_Ajust_X{ 0 };
-	int Rot_Ajust_Y{ 0 };
-
-	// Detect Colition
-	void Colition();
-
-	
+	//Detect the current shape on the input position
+	bool detect_limit(int CheckPosX, int CheckPosY);
 
 	// Get input to move shape
 	void UserInput();	

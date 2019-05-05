@@ -10,6 +10,7 @@
 #include "Display.h"
 #include "Shapes.h"
 #include "ConsoleAttributes.h"
+#include "DetectLine.h"
 
 class Game
 {
@@ -21,9 +22,13 @@ public:
 
 protected:
 
-	Score		Score;
+	Score		m_Score;
+	
 	Display		display;
 	
+	DetectLine m_DetectLine;
+	
+		
 	// Format of the Map
 	std::vector<Coordinate> m_Map;
 
@@ -39,13 +44,16 @@ protected:
 	// Choose a random Shape
 	void Choose_Shape();
 
+	//Spawn a random shape
 	int Random_Shape (int high);
 	
+	//Map width
 	int map_width{ 11 };
-
+	
+	//Map height
 	const int map_height{ 21 };
 	
-
+	//Store loded shapes
 	std::vector<Shapes> m_save_shapes;
 };
 

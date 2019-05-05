@@ -6,15 +6,12 @@
 Shapes::Shapes(std::string Inp_Name, std::vector<std::vector<Coordinate>> Inp_Format, WORD Inp_Color)
 	:m_Name{ Inp_Name }, m_rotation{ Inp_Format }, m_Color{ Inp_Color }
 {
+	// ajust position spawn
 	m_Coordinate.Add(4, 4);
 
+	//rotation it spawns
 	m_Format = m_rotation[0];
-
-	for (int i = 0; i < m_rotation[0].size(); i++)
-	{
-		m_Format[i] = m_rotation[0][i];
-	}
-
+	
 }
 		
 
@@ -28,69 +25,65 @@ void Shapes::Move()
 {
 	bool move = true;
 	int Y = m_Coordinate.Y;
+	
+	//move while it can
 	while (move)
 	{
-		
-
-		if (detect_limit(m_Coordinate.X, (m_Coordinate.Y + Move_Speed)))
-			m_Coordinate.Y += Move_Speed;
-		else
-			move = false;
-
-
 		// Detect user input
 		if (_kbhit())
 			UserInput();
 
-		ScreenDisplay(' ', BACKGROUND_RED);
-		Y = m_Coordinate.Y;
-		while (detect_limit(m_Coordinate.X, (m_Coordinate.Y + Move_Speed))){
-		m_Coordinate.Y += Move_Speed;
 
+		//detect if can move
+		if (detect_limit(m_Coordinate.X, (m_Coordinate.Y + Move_Speed)))
+			m_Coordinate.Y += Move_Speed;
+		else
+			move = false;
 		
+
+		//display on the screen
+		ScreenDisplay(' ', BACKGROUND_RED);
+		while (_kbhit()) _getch();
+		Y = m_Coordinate.Y;
+
+		//move the piece until it colide with somthing to create the prediction shape
+		while (detect_limit(m_Coordinate.X, (m_Coordinate.Y + Move_Speed))){
+		m_Coordinate.Y += Move_Speed;		
 		}
 		ScreenDisplay(' ', WHITE_ON_WHITE);
 		
 		// Time the shape apear on the screen
 		Sleep(500);		
-		
+		//delet pediction shape
 		ScreenDelete();
 		m_Coordinate.Y = Y;
+
+		//delete the piece
 		ScreenDelete();
 	}	
 
+	//fix pice on the map
 	ScreenDisplay('#', BACKGROUND_RED);
 
 }
 
 bool Shapes::detect_limit(int CheckPosX, int CheckPosY)
 {
-
-	_COORD CheckPos;
-
 	
-
-	char kAnalized[1];	
-
-	// Number Of Characters Read
-	DWORD NumberOfCharsRead = 0;
-
+	//Detect the coordinate of every parte of the piece to see if collides
 	for (int i = 0; i < m_Format.size(); i++)
 	{
 		Coordinate pos((m_Format[i].X + CheckPosX), m_Format[i].Y + CheckPosY);
+		
 
-		CheckPos.X = pos.X;
-		CheckPos.Y = pos.Y;
-
-		ReadConsoleOutputCharacter(ConsoleOutput, kAnalized, 1, CheckPos, &NumberOfCharsRead);
-
-		if (kAnalized[0] != ' ')
+		if (m_Display.ReadChar(pos) != ' ')
 			return false;
 	}
+	//return true whene don't colide
 		return true;
 		
 }
-
+// dispaly the shape on the screen
 void Shapes::ScreenDisplay(char c, WORD co)
 {
 
@@ -101,7 +94,7 @@ void Shapes::ScreenDisplay(char c, WORD co)
 		m_Display.WriteChar(pos, c, co);
 	}
 }
-
+//delete shape on the screen
 void Shapes::ScreenDelete()
 {
 	for (int i = 0; i < m_Format.size(); i++)
@@ -143,13 +136,19 @@ void Shapes::UserInput()
 		break;
 	
 	case ' ':
-
+		//try rotate
+		int s_rotation{ rotation };
 		rotation++;
 		if (rotation == max_rotion)
 			rotation = 0;
 
 		m_Format = m_rotation[rotation];
-				
+		
+		//detect if is possible
+		if (!detect_limit(m_Coordinate.X, m_Coordinate.Y)) {
+			rotation = s_rotation;
+			m_Format = m_rotation[rotation];
+		}				
 		break;
 	}
 }

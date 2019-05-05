@@ -58,6 +58,37 @@ void	Display::WriteMenssage(Coordinate pos, std::string& writemessange)
 	WriteConsoleOutputCharacter(m_output, writemessange.c_str(), writemessange.length(), wpos, &d);
 }
 
+char Display::ReadChar(Coordinate pos)
+{
+	char kAnalized[1];
+
+	_COORD CheckPos;
+
+	CheckPos.X = pos.X;
+	CheckPos.Y = pos.Y;
+
+	// Number Of Characters Read
+	DWORD NumberOfCharsRead = 0;
+	ReadConsoleOutputCharacter(m_output, kAnalized, 1, CheckPos, &NumberOfCharsRead);	
+	return kAnalized[0];
+}
+
+WORD Display::ReadAttribute(Coordinate pos)
+{
+	WORD AtAnalized;
+
+	_COORD CheckPos;
+
+	CheckPos.X = pos.X;
+	CheckPos.Y = pos.Y;
+
+	// Number Of Characters Read
+	DWORD NumberOfCharsRead = 0;
+
+	ReadConsoleOutputAttribute(m_output, &AtAnalized, 1, CheckPos, &NumberOfCharsRead);
+	return AtAnalized;
+}
+
 /*
 void	ConsoleWindow::fillScreen(char fillChar, WORD attribute)
 {

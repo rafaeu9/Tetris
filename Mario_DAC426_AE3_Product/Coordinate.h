@@ -14,6 +14,8 @@ public:
 	// Add to the X and Y at the same time (X, Y)
 	void Add(int inp_X, int inp_Y);
 
+	void copy(int inp_X, int inp_Y);
+
 	// Add wiht anoder Coordinate
 	void Add_Coordinate(Coordinate inp);
 

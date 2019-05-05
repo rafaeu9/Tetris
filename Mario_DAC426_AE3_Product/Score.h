@@ -16,7 +16,7 @@ public:
 	void	SDisplay();
 
 	// Add a point in the score
-	void	Add_Points();
+	void	Add_Points(int inp_points);
 
 	// Get the actual points
 	int		GetPoints();

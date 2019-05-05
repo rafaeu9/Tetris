@@ -5,14 +5,12 @@ using namespace std;
 
 Game::Game()
 {
-	
+		
 	Load_Map();
 	
-	Score.SDisplay();
-
 	Load_Shapes();		
-	
-	
+
+	DetectLine m_DetectLine.config(map_width, map_height);
 }
 
 
@@ -22,15 +20,17 @@ Game::~Game()
 
 void Game::Play_Game()
 {
-	while (true) {
-	
 
+	while (true) {		
+	
+		m_Score.SDisplay();
 
 		Shapes Actual_Shape = m_Shapes[Random_Shape(m_Shapes.size() - 1)];
 	
 		Actual_Shape.Move();
 		
 		m_save_shapes.push_back(Actual_Shape);
+		m_Score.Add_Points(m_DetectLine.check());	
 
 		
 	}
@@ -87,7 +87,7 @@ void Game::Load_Map()
 		display.WriteChar(Coordinate(0, i+2), (char)178, WHITE_ON_BLACK);
 	}
 	
-	for (size_t i = 0; i < map_height + 1; i++)
+	for (size_t i = 0; i < map_height+1; i++)
 	{
 		display.WriteChar(Coordinate(map_width, i+2), (char)178, WHITE_ON_BLACK);
 	}
