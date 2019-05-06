@@ -11,10 +11,10 @@ class DetectLine
 {	
 public:
 
-	DetectLine();
+	DetectLine(int inp_width, int inp_height);
 	~DetectLine();
 	
-	void config(int inp_width, int inp_height);
+
 
 	int check();
 
@@ -25,10 +25,10 @@ protected:
 	Coordinate CheckPos;
 
 	int m_widt{ 0 };
-	int m_height{0};
+	int m_height{10};
 
 	int LineChar{0};
-	int MaxLineChar{ m_widt };
+	int MaxLineChar;
 
 	int LineEmpChar{ 0 };
 	int TopLine{ 0 };

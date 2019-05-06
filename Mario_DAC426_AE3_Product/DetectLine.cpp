@@ -2,9 +2,11 @@
 
 
 
-DetectLine::DetectLine()
+DetectLine::DetectLine(int inp_width, int inp_height)
 {
-
+	m_widt = inp_width ;
+	m_height = inp_height + 1;
+	MaxLineChar = m_widt - 1;
 }
 
 
@@ -12,22 +14,15 @@ DetectLine::~DetectLine()
 {
 }
 
-void DetectLine::config(int inp_width, int inp_height)
-{
-	m_widt = inp_width - 1;
-	m_height = inp_height - 1;
-}
-
 int DetectLine::check()
 {
-
-	for (int i = m_height; i == 4; i--)
+	   
+	for (int i = m_height; i > 3; i--)
 	{
 
-		for (int o = 1; o == m_widt; o++) 
+		for (int o = 1; o < m_widt; o++)
 		{
 			CheckPos.copy(o, i);
-
 			if (m_Display.ReadChar(CheckPos) != ' ')
 				LineChar++;
 			else
@@ -36,10 +31,13 @@ int DetectLine::check()
 
 		if (LineChar == MaxLineChar)
 			FullLines.push(i);
+		
 		LineChar = 0;
 
-		if (LineEmpChar == MaxLineChar)
+		if (LineEmpChar == MaxLineChar) {
 			TopLine = i;
+			
+		}
 		LineEmpChar = 0;
 	}
 		
@@ -54,9 +52,9 @@ int DetectLine::check()
 			m_Display.WriteChar(CheckPos, ' ', WHITE_ON_BLACK);
 		}
 
-		for (int i = FullLines.top() - 1; i == TopLine + 1; i--)
+		for (int i = FullLines.top() - 1; i > TopLine + 1; i--)
 		{
-			for (int o = 1; o == m_widt; o++)
+			for (int o = 1; o < m_widt; o++)
 			{
 				CheckPos.copy(o, i);
 				char inp_Char = m_Display.ReadChar(CheckPos);
@@ -66,8 +64,11 @@ int DetectLine::check()
 				}
 			}
 		}
+
 		FullLines.pop();
 	}
+
+	
 
 	return Points;
 }

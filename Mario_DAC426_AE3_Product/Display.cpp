@@ -62,6 +62,8 @@ char Display::ReadChar(Coordinate pos)
 {
 	char kAnalized[1];
 
+	char a = '+';
+
 	_COORD CheckPos;
 
 	CheckPos.X = pos.X;

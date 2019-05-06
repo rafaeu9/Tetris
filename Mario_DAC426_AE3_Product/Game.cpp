@@ -5,12 +5,11 @@ using namespace std;
 
 Game::Game()
 {
-		
-	Load_Map();
-	
-	Load_Shapes();		
 
-	DetectLine m_DetectLine.config(map_width, map_height);
+	Load_Map();
+
+	Load_Shapes();
+			
 }
 
 
@@ -21,7 +20,7 @@ Game::~Game()
 void Game::Play_Game()
 {
 
-	while (true) {		
+	do {
 	
 		m_Score.SDisplay();
 
@@ -30,10 +29,13 @@ void Game::Play_Game()
 		Actual_Shape.Move();
 		
 		m_save_shapes.push_back(Actual_Shape);
+
+		DetectLine m_DetectLine(map_width, map_height);
+
 		m_Score.Add_Points(m_DetectLine.check());	
 
 		
-	}
+	} while (GameOver());
 
 }
 
@@ -72,24 +74,24 @@ void Game::Load_Map()
 		
 	
 	
-	for (size_t i = 0; i < map_width; i++)
+	for (int i = 0; i < map_width; i++)
 	{
-		display.WriteChar(Coordinate(i, 2) , (char)178, WHITE_ON_BLACK);
+		m_Display.WriteChar(Coordinate(i, 2) , (char)178, WHITE_ON_BLACK);
 	}
 	
-	for (size_t i = 0; i < map_width; i++)
+	for (int i = 0; i < map_width; i++)
 	{
-		display.WriteChar(Coordinate(i, map_height+2), (char)178, WHITE_ON_BLACK);
+		m_Display.WriteChar(Coordinate(i, map_height+2), (char)178, WHITE_ON_BLACK);
 	}
 	
-	for (size_t i = 0; i < map_height; i++)
+	for (int i = 0; i < map_height; i++)
 	{
-		display.WriteChar(Coordinate(0, i+2), (char)178, WHITE_ON_BLACK);
+		m_Display.WriteChar(Coordinate(0, i+2), (char)178, WHITE_ON_BLACK);
 	}
 	
-	for (size_t i = 0; i < map_height+1; i++)
+	for (int i = 0; i < 1+map_height; i++)
 	{
-		display.WriteChar(Coordinate(map_width, i+2), (char)178, WHITE_ON_BLACK);
+		m_Display.WriteChar(Coordinate(map_width, 2+i), (char)178, WHITE_ON_BLACK);
 	}
 
 
@@ -102,10 +104,8 @@ void Game::Load_Shapes()
 	string	name;
 	string	color;
 	bool shape_end;
-	char	character;
 	std::vector<Coordinate> Shapechar;
 	std::vector<std::vector<Coordinate>> rotation;
-	int length;
 	Coordinate pos;
 	string text_from_file;
 
@@ -176,4 +176,17 @@ int Game::Random_Shape(int high)
 	std::uniform_int_distribution<int> uid{ 0,high };
 
 	return uid(mt_rand);
+}
+
+bool Game::GameOver()
+{
+	Coordinate CheckPos;
+	for (int i = 1; i < map_width; i++)
+	{
+		
+		CheckPos.copy(i, 3);
+		if (m_Display.ReadChar(CheckPos) != ' ')
+			return false;		
+	}
+	return true;
 }

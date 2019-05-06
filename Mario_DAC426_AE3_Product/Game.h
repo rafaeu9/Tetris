@@ -24,9 +24,9 @@ protected:
 
 	Score		m_Score;
 	
-	Display		display;
+	Display		m_Display;
 	
-	DetectLine m_DetectLine;
+	
 	
 		
 	// Format of the Map
@@ -47,6 +47,11 @@ protected:
 	//Spawn a random shape
 	int Random_Shape (int high);
 	
+	bool GameOver();
+
+	
+
+
 	//Map width
 	int map_width{ 11 };
 	
@@ -55,5 +60,7 @@ protected:
 	
 	//Store loded shapes
 	std::vector<Shapes> m_save_shapes;
+
+	
 };
 

@@ -1,17 +1,4 @@
 ﻿  DetectLine.cpp
 c:\users\rafae\source\repos\rafaeu9\mario_dac426_ae3_product\mario_dac426_ae3_product\shapes.h(59): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-c:\users\rafae\source\repos\rafaeu9\mario_dac426_ae3_product\mario_dac426_ae3_product\game.h(29): error C3646: 'm_DetectLine': unknown override specifier
-c:\users\rafae\source\repos\rafaeu9\mario_dac426_ae3_product\mario_dac426_ae3_product\game.h(29): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-c:\users\rafae\source\repos\rafaeu9\mario_dac426_ae3_product\mario_dac426_ae3_product\detectline.cpp(46): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-  Game.cpp
-c:\users\rafae\source\repos\rafaeu9\mario_dac426_ae3_product\mario_dac426_ae3_product\shapes.h(59): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-c:\users\rafae\source\repos\rafaeu9\mario_dac426_ae3_product\mario_dac426_ae3_product\game.cpp(28): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-c:\users\rafae\source\repos\rafaeu9\mario_dac426_ae3_product\mario_dac426_ae3_product\game.cpp(77): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-c:\users\rafae\source\repos\rafaeu9\mario_dac426_ae3_product\mario_dac426_ae3_product\game.cpp(82): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-c:\users\rafae\source\repos\rafaeu9\mario_dac426_ae3_product\mario_dac426_ae3_product\game.cpp(87): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-c:\users\rafae\source\repos\rafaeu9\mario_dac426_ae3_product\mario_dac426_ae3_product\game.cpp(92): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-c:\users\rafae\source\repos\rafaeu9\mario_dac426_ae3_product\mario_dac426_ae3_product\game.cpp(105): warning C4101: 'character': unreferenced local variable
-c:\users\rafae\source\repos\rafaeu9\mario_dac426_ae3_product\mario_dac426_ae3_product\game.cpp(108): warning C4101: 'length': unreferenced local variable
-  Main.cpp
-c:\users\rafae\source\repos\rafaeu9\mario_dac426_ae3_product\mario_dac426_ae3_product\shapes.h(59): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  Generating Code...
+c:\users\rafae\source\repos\rafaeu9\mario_dac426_ae3_product\mario_dac426_ae3_product\detectline.cpp(44): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  Mario_DAC426_AE3_Product.vcxproj -> C:\Users\rafae\Source\Repos\rafaeu9\Mario_DAC426_AE3_Product\x64\Debug\Mario_DAC426_AE3_Product.exe
