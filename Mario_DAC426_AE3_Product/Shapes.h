@@ -16,7 +16,7 @@ class Shapes
 {
 public:
 	// Create a new shape (Name of the shape, format in coordinate of the shape, color, character)
-	Shapes(std::string Inp_Name, std::vector<std::vector<Coordinate>> Inp_Format, WORD Color);
+	Shapes(std::string Inp_Name, std::vector<std::vector<Coordinate>> Inp_Format, char Inp_Char, WORD Color);
 
 	~Shapes();
 
@@ -32,11 +32,11 @@ private:
 	// Format of the shape
 	std::vector<Coordinate> m_Format;
 
+	//Shape Character
+	char m_Char;
 	
-
 	// Color of the shape
 	WORD			m_Color;
-
 	
 	Display			m_Display;
 
@@ -47,7 +47,7 @@ private:
 	void ScreenDelete();
 
 	// Movement speed of the shape
-	int				Move_Speed{ 1 };
+	int			Move_Speed{ 1 };
 
 	//actual rotation position 
 	int rotation{ 0 };
@@ -63,8 +63,7 @@ private:
 
 	// Get input to move shape
 	void UserInput();	
-
-	HANDLE ConsoleOutput = GetStdHandle(STD_OUTPUT_HANDLE);
+	
 
 };
 

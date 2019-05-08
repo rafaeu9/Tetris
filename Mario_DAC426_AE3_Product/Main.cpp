@@ -7,12 +7,12 @@
 #include "Game.h"
 #include "Display.h"
 #include "Coordinate.h"
-
+#include "Tester.h"
 
 
 int main()
 {
-
+		
 	Game Game;	
 
 	Game.Play_Game();

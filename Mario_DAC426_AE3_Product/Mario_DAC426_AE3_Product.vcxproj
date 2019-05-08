@@ -120,6 +120,8 @@
     <ClCompile Include="Display.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Map.cpp" />
+    <ClCompile Include="RandomNumber.cpp" />
     <ClCompile Include="Score.cpp" />
     <ClCompile Include="Shapes.cpp" />
   </ItemGroup>
@@ -129,9 +131,14 @@
     <ClInclude Include="DetectLine.h" />
     <ClInclude Include="Display.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Map.h" />
+    <ClInclude Include="RandomNumber.h" />
     <ClInclude Include="Score.h" />
     <ClInclude Include="Shapes.h" />
     <ClInclude Include="Tester.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="Tester.obj" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

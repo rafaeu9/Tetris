@@ -13,28 +13,33 @@ public:
 
 	DetectLine(int inp_width, int inp_height);
 	~DetectLine();
-	
-
-
+		
 	int check();
 
 protected:
 
 	Display m_Display;
 
-	Coordinate CheckPos;
+	Coordinate  m_CheckPos;
 
+	//area wher will scan
 	int m_widt{ 0 };
 	int m_height{10};
 
-	int LineChar{0};
-	int MaxLineChar;
+	//count how many characters are in the line
+	int m_LineChar{0};
+	//Max of character on the line
+	int  m_MaxLineChar;
 
-	int LineEmpChar{ 0 };
-	int TopLine{ 0 };
+	//count how many empty spaces are in the line
+	int  m_LineEmpChar{ 0 };
+	//save the Y of the top line
+	int m_TopLine{ 0 };
 
-	std::stack <int> FullLines;
+	//save the Y of the full lines
+	std::stack <int>  m_FullLines;
 
-	int Points{ 0 };
+	//save the quantaty of full lines
+	int  m_Points{ 0 };
 };
 

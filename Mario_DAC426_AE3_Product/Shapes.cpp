@@ -3,8 +3,8 @@
 
 
 
-Shapes::Shapes(std::string Inp_Name, std::vector<std::vector<Coordinate>> Inp_Format, WORD Inp_Color)
-	:m_Name{ Inp_Name }, m_rotation{ Inp_Format }, m_Color{ Inp_Color }
+Shapes::Shapes(std::string Inp_Name, std::vector<std::vector<Coordinate>> Inp_Format, char Inp_Char, WORD Inp_Color)
+	:m_Name{ Inp_Name }, m_rotation{ Inp_Format }, m_Color{ Inp_Color }, m_Char{ Inp_Char }
 {
 	// ajust position spawn
 	m_Coordinate.Add(4, 4);
@@ -42,7 +42,7 @@ void Shapes::Move()
 		
 
 		//display on the screen
-		ScreenDisplay(' ', BACKGROUND_RED);
+		ScreenDisplay(' ', m_Color);
 		while (_kbhit()) _getch();
 		Y = m_Coordinate.Y;
 
@@ -62,14 +62,13 @@ void Shapes::Move()
 		ScreenDelete();
 	}	
 
-	//fix pice on the map
-	ScreenDisplay('#', BACKGROUND_RED);
+	//fix piece on the map
+	ScreenDisplay(m_Char, m_Color);
 
 }
 
 bool Shapes::detect_limit(int CheckPosX, int CheckPosY)
-{
-	
+{	
 	//Detect the coordinate of every parte of the piece to see if collides
 	for (int i = 0; i < m_Format.size(); i++)
 	{
@@ -80,9 +79,9 @@ bool Shapes::detect_limit(int CheckPosX, int CheckPosY)
 			return false;
 	}
 	//return true whene don't colide
-		return true;
-		
+		return true;		
 }
+
 // dispaly the shape on the screen
 void Shapes::ScreenDisplay(char c, WORD co)
 {
@@ -94,6 +93,7 @@ void Shapes::ScreenDisplay(char c, WORD co)
 		m_Display.WriteChar(pos, c, co);
 	}
 }
+
 //delete shape on the screen
 void Shapes::ScreenDelete()
 {
@@ -104,6 +104,7 @@ void Shapes::ScreenDelete()
 	}
 }
 
+//Get user input
 void Shapes::UserInput()
 {
 	char key{ '0' };
