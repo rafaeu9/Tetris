@@ -1,8 +1,8 @@
 #pragma once
 
 #include <conio.h>
-
 #include <sstream>
+
 #include "Coordinate.h" 
 #include "Display.h"
 
@@ -16,12 +16,12 @@ public:
 	void	SDisplay();
 
 	// Add a point in the score
-	void	Add_Points(int inp_points);
+	void	AddPoints(int inp_points);
 
 	// Get the actual points
 	int		GetPoints();
 
-private:
+protected:
 
 	// Actual points
 	int		m_Points{ 0 };

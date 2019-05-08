@@ -4,9 +4,9 @@
 
 DetectLine::DetectLine(int inp_width, int inp_height)
 {
-	m_widt = inp_width ;
-	m_height = inp_height + 1;
-	m_MaxLineChar = m_widt - 1;
+	m_Width = inp_width ;
+	m_Height = inp_height + 1;
+	m_MaxLineChar = m_Width - 1;
 }
 
 
@@ -14,17 +14,17 @@ DetectLine::~DetectLine()
 {
 }
 
-int DetectLine::check()
+int DetectLine::Check()
 {
 	   
 	//Check all lines from bottom to top
-	for (int i = m_height; i > 3; i--)
+	for (int i = m_Height; i > 3; i--)
 	{
 		//check all characters from left to right 
-		for (int o = 1; o < m_widt; o++)
+		for (int o = 1; o < m_Width; o++)
 		{
 			//ajust actual position 
-			m_CheckPos.copy(o, i);
+			m_CheckPos.Copy(o, i);
 
 			//count empty or filled spaces 
 			if (m_Display.ReadChar(m_CheckPos) != ' ')
@@ -55,9 +55,9 @@ int DetectLine::check()
 	while (!m_FullLines.empty())
 	{
 		//delete the line
-		for (int i = 1; i < m_widt; i++)
+		for (int i = 1; i < m_Width; i++)
 		{
-			m_CheckPos.copy(i, m_FullLines.top());
+			m_CheckPos.Copy(i, m_FullLines.top());
 			m_Display.WriteChar(m_CheckPos, ' ', WHITE_ON_BLACK);
 		}
 
@@ -65,9 +65,9 @@ int DetectLine::check()
 		for (int i = m_FullLines.top() - 1; i > m_TopLine + 1; i--)
 		{
 			//move evry character une position down
-			for (int o = 1; o < m_widt; o++)
+			for (int o = 1; o < m_Width; o++)
 			{
-				m_CheckPos.copy(o, i);
+				m_CheckPos.Copy(o, i);
 				char inp_Char = m_Display.ReadChar(m_CheckPos);
 				if (inp_Char != ' ') {
 					m_Display.WriteChar(Coordinate(m_CheckPos.X, m_CheckPos.Y + 1), inp_Char, m_Display.ReadAttribute(m_CheckPos));

@@ -16,12 +16,12 @@ protected:
 
 	Display		m_Display;
 
-	Coordinate m_pos;
+	Coordinate	m_Pos;
 
 	//Map width
-	int m_width{ 0 };
+	int m_Width{ 0 };
 
 	//Map height
-	int m_height{ 0 };
+	int m_Height{ 0 };
 };
 

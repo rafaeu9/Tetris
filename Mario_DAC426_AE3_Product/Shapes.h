@@ -3,9 +3,6 @@
 #include <string>
 #include <vector>
 #include <Windows.h>
-#include <time.h>
-#include <math.h> 
-
 
 #include "Coordinate.h"
 #include "Display.h"
@@ -23,47 +20,49 @@ public:
 	// Move shape
 	void Move();
 
-private:
-
-	Coordinate		m_Coordinate;
 	// Name of the shape
-	std::string		m_Name;
+	std::string		Name;
 
-	// Format of the shape
-	std::vector<Coordinate> m_Format;
-
-	//Shape Character
-	char m_Char;
-	
-	// Color of the shape
-	WORD			m_Color;
-	
-	Display			m_Display;
 
 	// Display Shape on the Screen
-	void ScreenDisplay(char c, WORD co);
+	void ScreenDisplay(char Inp_Char, WORD Inp_Colour);
 
 	// Delete Shape from the Screen
 	void ScreenDelete();
 
+	Coordinate	m_Coordinate;
+
+protected:
+
+	
+
+	Display		m_Display;
+
+	//Shape Character
+	char		m_Char;
+
+	// Color of the shape
+	WORD		m_Color;
+
 	// Movement speed of the shape
-	int			Move_Speed{ 1 };
+	int			m_MoveSpeed{ 1 };
 
 	//actual rotation position 
-	int rotation{ 0 };
+	int			m_ActualRotation{ 0 };
+
+	// Format of the shape
+	std::vector<Coordinate>	m_Format;
 
 	//Store of the rotation positions
-	std::vector<std::vector<Coordinate>> m_rotation;
+	std::vector<std::vector<Coordinate>> m_Rotation;
 
 	//rotations possible
-	int max_rotion = m_rotation.size();
-	
+	int m_MaxRotation = m_Rotation.size();
+		
 	//Detect the current shape on the input position
-	bool detect_limit(int CheckPosX, int CheckPosY);
+	bool DetectLimit(int CheckPosX, int CheckPosY);
 
 	// Get input to move shape
 	void UserInput();	
-	
-
 };
 

@@ -1,18 +1,3 @@
-﻿  DetectLine.cpp
-c:\users\rafae\source\repos\rafaeu9\mario_dac426_ae3_product\mario_dac426_ae3_product\shapes.h(57): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-c:\users\rafae\source\repos\rafaeu9\mario_dac426_ae3_product\mario_dac426_ae3_product\detectline.cpp(52): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-  Display.cpp
-c:\users\rafae\source\repos\rafaeu9\mario_dac426_ae3_product\mario_dac426_ae3_product\display.cpp(58): warning C4267: 'argument': conversion from 'size_t' to 'DWORD', possible loss of data
-  Game.cpp
-c:\users\rafae\source\repos\rafaeu9\mario_dac426_ae3_product\mario_dac426_ae3_product\shapes.h(57): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-c:\users\rafae\source\repos\rafaeu9\mario_dac426_ae3_product\mario_dac426_ae3_product\game.cpp(30): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-  Main.cpp
-c:\users\rafae\source\repos\rafaeu9\mario_dac426_ae3_product\mario_dac426_ae3_product\shapes.h(57): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-c:\users\rafae\source\repos\rafaeu9\mario_dac426_ae3_product\mario_dac426_ae3_product\main.cpp(28): warning C4551: function call missing argument list
-  Map.cpp
-  RandomNumber.cpp
-  Score.cpp
-  Shapes.cpp
-c:\users\rafae\source\repos\rafaeu9\mario_dac426_ae3_product\mario_dac426_ae3_product\shapes.h(57): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  Generating Code...
+﻿  Main.cpp
+c:\users\rafae\source\repos\rafaeu9\mario_dac426_ae3_product\mario_dac426_ae3_product\shapes.h(54): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
 Tester.obj : fatal error LNK1112: module machine type 'x86' conflicts with target machine type 'x64'

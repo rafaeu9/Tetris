@@ -49,13 +49,25 @@ void	Display::WriteChar(Coordinate pos, char writeChar, WORD attribute )
 }
 
 // Display any menssage
-void	Display::WriteMenssage(Coordinate pos, std::string& writemessange)
+void	Display::WriteMenssage(Coordinate pos, std::string& writemessange, WORD attribute)
 {
 	DWORD d;
 	COORD wpos;
 	wpos.X = pos.X;
 	wpos.Y = pos.Y;	
+	WriteConsoleOutputAttribute(m_output, &attribute, writemessange.length(), wpos, &d);
 	WriteConsoleOutputCharacter(m_output, writemessange.c_str(), writemessange.length(), wpos, &d);
+}
+
+void Display::WriteMenssage(const Coordinate pos, std::string& writemessange)
+{
+	DWORD d;
+	COORD wpos;
+	wpos.X = pos.X;
+	wpos.Y = pos.Y;
+	
+	WriteConsoleOutputCharacter(m_output, writemessange.c_str(), writemessange.length(), wpos, &d);
+
 }
 
 char Display::ReadChar(Coordinate pos)
@@ -91,8 +103,8 @@ WORD Display::ReadAttribute(Coordinate pos)
 	return AtAnalized;
 }
 
-/*
-void	ConsoleWindow::fillScreen(char fillChar, WORD attribute)
+
+void	Display::FillScreen(char fillChar, WORD attribute)
 {
 	CONSOLE_SCREEN_BUFFER_INFO info;
 	GetConsoleScreenBufferInfo(m_output, &info);
@@ -107,4 +119,3 @@ void	ConsoleWindow::fillScreen(char fillChar, WORD attribute)
 	FillConsoleOutputCharacter(m_output, fillChar, dwBufferLen, coordWriteStart, &dwWritten);
 	SetConsoleCursorPosition(m_output, coordWriteStart);
 }
-*/

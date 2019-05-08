@@ -12,7 +12,7 @@ public:
 protected:
 
 	std::random_device rd;
-	std::mt19937 mt_rand{ rd() };
 
+	std::mt19937 mt_rand{ rd() };
 };
 

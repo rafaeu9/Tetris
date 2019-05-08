@@ -4,13 +4,13 @@
 
 
 Shapes::Shapes(std::string Inp_Name, std::vector<std::vector<Coordinate>> Inp_Format, char Inp_Char, WORD Inp_Color)
-	:m_Name{ Inp_Name }, m_rotation{ Inp_Format }, m_Color{ Inp_Color }, m_Char{ Inp_Char }
+	:Name{ Inp_Name }, m_Rotation{ Inp_Format }, m_Color{ Inp_Color }, m_Char{ Inp_Char }
 {
 	// ajust position spawn
 	m_Coordinate.Add(4, 4);
 
 	//rotation it spawns
-	m_Format = m_rotation[0];
+	m_Format = m_Rotation[0];
 	
 }
 		
@@ -35,8 +35,8 @@ void Shapes::Move()
 
 
 		//detect if can move
-		if (detect_limit(m_Coordinate.X, (m_Coordinate.Y + Move_Speed)))
-			m_Coordinate.Y += Move_Speed;
+		if (DetectLimit(m_Coordinate.X, (m_Coordinate.Y + m_MoveSpeed)))
+			m_Coordinate.Y += m_MoveSpeed;
 		else
 			move = false;
 		
@@ -47,8 +47,8 @@ void Shapes::Move()
 		Y = m_Coordinate.Y;
 
 		//move the piece until it colide with somthing to create the prediction shape
-		while (detect_limit(m_Coordinate.X, (m_Coordinate.Y + Move_Speed))){
-		m_Coordinate.Y += Move_Speed;		
+		while (DetectLimit(m_Coordinate.X, (m_Coordinate.Y + m_MoveSpeed))){
+		m_Coordinate.Y += m_MoveSpeed;		
 		}
 		ScreenDisplay(' ', WHITE_ON_WHITE);
 		
@@ -67,7 +67,7 @@ void Shapes::Move()
 
 }
 
-bool Shapes::detect_limit(int CheckPosX, int CheckPosY)
+bool Shapes::DetectLimit(int CheckPosX, int CheckPosY)
 {	
 	//Detect the coordinate of every parte of the piece to see if collides
 	for (int i = 0; i < m_Format.size(); i++)
@@ -83,14 +83,14 @@ bool Shapes::detect_limit(int CheckPosX, int CheckPosY)
 }
 
 // dispaly the shape on the screen
-void Shapes::ScreenDisplay(char c, WORD co)
+void Shapes::ScreenDisplay(char Inp_Char, WORD Inp_Colour)
 {
 
 	for (int i = 0; i < m_Format.size(); i++)
 	{
 		Coordinate pos((m_Format[i].X + m_Coordinate.X), (m_Format[i].Y + m_Coordinate.Y));
 		
-		m_Display.WriteChar(pos, c, co);
+		m_Display.WriteChar(pos, Inp_Char, Inp_Colour);
 	}
 }
 
@@ -117,38 +117,38 @@ void Shapes::UserInput()
 	case 'd':
 
 		// Move left	
-		if (detect_limit(m_Coordinate.X + Move_Speed, m_Coordinate.Y ))
-		m_Coordinate.X += Move_Speed;
+		if (DetectLimit(m_Coordinate.X + m_MoveSpeed, m_Coordinate.Y ))
+		m_Coordinate.X += m_MoveSpeed;
 
 		break;
 	case 'a':
 
 		// Move right
-		if (detect_limit(m_Coordinate.X - Move_Speed, m_Coordinate.Y))
-		m_Coordinate.X -= Move_Speed;
+		if (DetectLimit(m_Coordinate.X - m_MoveSpeed, m_Coordinate.Y))
+		m_Coordinate.X -= m_MoveSpeed;
 
 		break;
 	case 's':
 
 		// Move down
-		if (detect_limit(m_Coordinate.X, (m_Coordinate.Y + Move_Speed)))
-		m_Coordinate.Y += Move_Speed;
+		if (DetectLimit(m_Coordinate.X, (m_Coordinate.Y + m_MoveSpeed)))
+		m_Coordinate.Y += m_MoveSpeed;
 
 		break;
 	
 	case ' ':
 		//try rotate
-		int s_rotation{ rotation };
-		rotation++;
-		if (rotation == max_rotion)
-			rotation = 0;
+		int s_rotation{ m_ActualRotation };
+		m_ActualRotation++;
+		if (m_ActualRotation == m_MaxRotation)
+			m_ActualRotation = 0;
 
-		m_Format = m_rotation[rotation];
+		m_Format = m_Rotation[m_ActualRotation];
 		
 		//detect if is possible
-		if (!detect_limit(m_Coordinate.X, m_Coordinate.Y)) {
-			rotation = s_rotation;
-			m_Format = m_rotation[rotation];
+		if (!DetectLimit(m_Coordinate.X, m_Coordinate.Y)) {
+			m_ActualRotation = s_rotation;
+			m_Format = m_Rotation[m_ActualRotation];
 		}				
 		break;
 	}

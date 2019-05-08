@@ -22,16 +22,21 @@ void Coordinate::Add(int inp_X, int inp_Y)
 	Y += inp_Y;
 }
 
-void Coordinate::copy(int inp_X, int inp_Y)
+void Coordinate::Copy(int inp_X, int inp_Y)
 {
 	X = inp_X;
 	Y = inp_Y;
 }
 
 
-void Coordinate::Add_Coordinate(Coordinate inp)
+void Coordinate::AddCoordinate(Coordinate inp)
 {
 	X += inp.X;
 	Y += inp.Y;
 }
 
+void Coordinate::CopyCoordinate(Coordinate inp)
+{
+	X = inp.X;
+	Y = inp.Y;
+}

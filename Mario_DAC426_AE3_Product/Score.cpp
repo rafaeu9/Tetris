@@ -21,7 +21,7 @@ void Score::SDisplay()
 	m_Display.WriteMenssage(m_Coordinate, m_Message);
 }
 
-void Score::Add_Points(int inp_points)
+void Score::AddPoints(int inp_points)
 {
 	m_Points += inp_points;
 }
