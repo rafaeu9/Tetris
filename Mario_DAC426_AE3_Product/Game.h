@@ -24,6 +24,8 @@ public:
 
 	void PlayGame();
 
+	void Start();
+
 	void TestMode(const std::string& testlife);
 
 protected:
@@ -53,7 +55,8 @@ protected:
 	//check if the game is over
 	bool	GameOver();
 
+	void	SaveScore();
 
-	
+	void GameOverMenu();
 };
 

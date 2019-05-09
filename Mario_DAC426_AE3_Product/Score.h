@@ -1,10 +1,13 @@
 #pragma once
-
 #include <conio.h>
+#include <fstream>
+#include <iostream>
 #include <sstream>
+#include <vector>
 
 #include "Coordinate.h" 
 #include "Display.h"
+#include "Save.h"
 
 class Score
 {
@@ -21,6 +24,12 @@ public:
 	// Get the actual points
 	int		GetPoints();
 
+	void Load();
+
+	void Write(std::string Inp_Name);
+
+	std::vector<Save> Top;
+
 protected:
 
 	// Actual points
@@ -31,5 +40,9 @@ protected:
 
 	// Display in the Screen
 	Display m_Display;	
+
+	
+
+	int TopSize{ 10 };
 };
 

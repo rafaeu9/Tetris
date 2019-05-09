@@ -7,8 +7,13 @@ Game::Game()
 {
 
 	//Load_Map();
+	
 	m_Map.Load(Coordinate(0, 2), m_MapWidth, m_MapHeight);	
+	
 	LoadShapes();
+
+	m_Score.Load();
+
 			
 }
 
@@ -19,7 +24,16 @@ Game::~Game()
 
 void Game::PlayGame()
 {
-	m_Map.Create();
+	 m_Map.Create();
+	 string m_Message;
+	 m_Message = "Keys:";
+	 m_Display.WriteMenssage(Coordinate(m_MapWidth + 2, 2), m_Message);
+	 m_Message = "a: Left";
+	 m_Display.WriteMenssage(Coordinate(m_MapWidth + 2, 3), m_Message);
+	 m_Message = "d: Right";
+	 m_Display.WriteMenssage(Coordinate(m_MapWidth + 2, 4), m_Message);
+	 m_Message = "s: Down";
+	 m_Display.WriteMenssage(Coordinate(m_MapWidth + 2, 5), m_Message);
 
 	do {
 	
@@ -41,15 +55,116 @@ void Game::PlayGame()
 		
 	} while (GameOver());
 
+	
+
+}
+
+void Game::Start()
+{
+
+	string m_Message;
+
+	cout << "####### ####### ####### ######    ###    #####\n";
+	cout << "   #    #          #    #     #    #    #     #\n";
+	cout << "   #    #          #    #     #    #    #\n";
+	cout << "   #    #####      #    ######     #     #####\n";
+	cout << "   #    #          #    #   #      #          #\n";
+	cout << "   #    #          #    #    #     #    #     #\n";
+	cout << "   #    #######    #    #     #   ###    #####\n";
+	cout << "\n Use a(<-) or d(->) to move and space to confirm\n";
+
+
+	m_Message = "Top:";
+	m_Display.WriteMenssage(Coordinate(50, 0), m_Message);
+
+	for (int i = 0; i < m_Score.Top.size(); i++)
+	{
+		if (m_Score.Top[i].Score < 0)
+			break;
+		std::stringstream oss;
+		oss << i+1 << ' ' << m_Score.Top[i].Name << ' ' << m_Score.Top[i].Score;
+
+
+		m_Message = oss.str();
+		m_Display.WriteMenssage(Coordinate(50, i+1), m_Message);
+	}
+	
+	        
+	int option{ 0 };
+	char key;
+	bool end = true;
+	do
+	{
+		string m_Message;
+			
+
+		
+		switch (option)
+		{
+		case 0:
+
+			m_Message = "        Start(X)  Test Mode( )  Exit( )";
+			m_Display.WriteMenssage(Coordinate(0, 10), m_Message);
+			break;
+		case 1:
+
+			m_Message = "        Start( )  Test Mode(X)  Exit( )";
+			m_Display.WriteMenssage(Coordinate(0, 10), m_Message);
+			break;
+
+		case 2:
+
+			m_Message = "        Start( )  Test Mode( )  Exit(X)";
+			m_Display.WriteMenssage(Coordinate(0, 10), m_Message);
+			break;
+		}
+		
+		while (_kbhit()) _getch();
+		if (end)
+			key = _getch();
+
+		switch (key)
+		{
+		case 'a':
+
+			if (option == 0)
+				option = 2;
+			else
+				option--;
+
+			break;
+		case 'd':
+
+			if (option == 2)
+				option = 0;
+			else
+				option++;
+
+			break;
+
+		case ' ':
+
+			end = false;
+
+			break;
+		}
+
+	} while (end);
+
+	m_Display.FillScreen(' ', WHITE_ON_BLACK);
+
+	if (option == 0)
+		PlayGame();
+	else if (option == 1)
+		TestMode("Testing.txt");
+
 }
 
 void Game::TestMode(const std::string& testlife)
 {
 	Tester tester;
 
-	assert(tester.isReadyToTest());
-
-	Display display;
+	assert(tester.isReadyToTest());	
 
 	//imput name
 	string	Inp_Name;
@@ -77,7 +192,7 @@ void Game::TestMode(const std::string& testlife)
 
 		getline(input, text_from_file);
 
-		display.FillScreen(' ', WHITE_ON_BLACK);
+		m_Display.FillScreen(' ', WHITE_ON_BLACK);
 
 		stringstream ss{ text_from_file };
 
@@ -100,13 +215,13 @@ void Game::TestMode(const std::string& testlife)
 		int errors = tester.test(text_from_file);
 
 		cout << "Errors: " << errors;
-
+		
 		_getch();
-				
 	}
 	
-	display.FillScreen(' ', WHITE_ON_BLACK);
+	m_Display.FillScreen(' ', WHITE_ON_BLACK);
 
+	Start();
 }
 
 
@@ -209,7 +324,10 @@ void Game::LoadShapes()
 bool Game::GameOver()
 {
 	
+
 	Coordinate CheckPos;
+
+	
 
 	//detect if have any character close to the top wall
 	for (int i = 1; i < m_MapWidth; i++)
@@ -218,7 +336,86 @@ bool Game::GameOver()
 
 		//if have any, end the game
 		if (m_Display.ReadChar(CheckPos) != ' ')
-			return false;		
+		{
+
+			GameOverMenu();
+			
+			return false;
+		}
 	}
 	return true;
+}
+
+void Game::GameOverMenu()
+{
+
+	bool save;
+
+	string Inp_Name;
+
+	m_Display.FillScreen(' ', WHITE_ON_BLACK);
+
+	using namespace std;
+	//Visual
+	cout << " #####     #    #     # #######   ####### #     # ####### ######\n";
+	cout << "#     #   # #   ##   ## #         #     # #     # #       #     #\n";
+	cout << "#        #   #  # # # # #         #     # #     # #       #     #\n";
+	cout << "#  #### #     # #  #  # #####     #     # #     # #####   ######\n";
+	cout << "#     # ####### #     # #         #     #  #   #  #       #   #\n";
+	cout << "#     # #     # #     # #         #     #   # #   #       #    #\n";
+	cout << " #####  #     # #     # #######   #######    #    ####### #     #\n";
+	cout << "\n       Use a(<-) or d(->) to move and space to confirm\n";
+	cout << "\n             You want to save your score?\n";
+
+	//User Input
+	char key{ 'a' };
+	bool end = true;
+	do
+	{
+		string m_Message;
+
+		switch (key)
+		{
+		case 'a':
+
+			m_Message = "                      YES(X)  NO( )";
+			m_Display.WriteMenssage(Coordinate(0, 11), m_Message);
+
+			save = true;
+
+			break;
+		case 'd':
+
+			m_Message = "                      YES( )  NO(X)";
+			m_Display.WriteMenssage(Coordinate(0, 11), m_Message);
+
+			save = false;
+
+			break;
+
+		case ' ':
+
+			end = false;
+
+			break;
+		}
+
+
+		while (_kbhit()) _getch();
+		if (end)
+			key = _getch();
+
+
+	} while (end);
+
+	//Get the name
+	if (save)
+	{
+		m_Display.FillScreen(' ', WHITE_ON_BLACK);
+
+		cout << "Name: ";
+
+		cin >> Inp_Name;
+		m_Score.Write(Inp_Name);
+	}
 }

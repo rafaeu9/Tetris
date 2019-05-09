@@ -16,11 +16,7 @@ int main()
 		
 	Game Game;	
 
-	//Game.TestMode("Testing.txt");
-
-	Game.PlayGame();
-
-	_getch();
+	Game.Start();	
 
 }
 

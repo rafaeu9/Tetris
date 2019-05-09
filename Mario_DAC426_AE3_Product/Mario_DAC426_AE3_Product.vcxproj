@@ -122,6 +122,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="RandomNumber.cpp" />
+    <ClCompile Include="Save.cpp" />
     <ClCompile Include="Score.cpp" />
     <ClCompile Include="Shapes.cpp" />
   </ItemGroup>
@@ -133,6 +134,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="RandomNumber.h" />
+    <ClInclude Include="Save.h" />
     <ClInclude Include="Score.h" />
     <ClInclude Include="Shapes.h" />
     <ClInclude Include="Tester.h" />

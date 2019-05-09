@@ -7,7 +7,7 @@ Shapes::Shapes(std::string Inp_Name, std::vector<std::vector<Coordinate>> Inp_Fo
 	:Name{ Inp_Name }, m_Rotation{ Inp_Format }, m_Color{ Inp_Color }, m_Char{ Inp_Char }
 {
 	// ajust position spawn
-	m_Coordinate.Add(4, 4);
+	m_Coordinate.Add(4, 2);
 
 	//rotation it spawns
 	m_Format = m_Rotation[0];
