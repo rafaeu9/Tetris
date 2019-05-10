@@ -54,9 +54,7 @@ protected:
 	
 	//check if the game is over
 	bool	GameOver();
-
-	void	SaveScore();
-
+	
 	void GameOverMenu();
 };
 

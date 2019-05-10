@@ -28,7 +28,7 @@ public:
 
 	void Write(std::string Inp_Name);
 
-	std::vector<Save> Top;
+	std::vector<Save> m_Top;
 
 protected:
 
@@ -41,8 +41,6 @@ protected:
 	// Display in the Screen
 	Display m_Display;	
 
-	
-
-	int TopSize{ 10 };
+	int m_TopSize{ 10 };
 };
 

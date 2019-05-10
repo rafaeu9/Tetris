@@ -51,7 +51,7 @@ void Score::Load()
 		cout << "ERROR OPEN Score.txt";
 	else		
 		//Read the score List
-		for (int i = 0; i < TopSize; i++)
+		for (int i = 0; i < m_TopSize; i++)
 		{
 			if (input.eof())
 				break;
@@ -63,7 +63,7 @@ void Score::Load()
 			//extrect the name and the Color
 			ss >> Inp_Name >> Inp_Score;
 
-			Top.push_back(Save(Inp_Name, Inp_Score));
+			m_Top.push_back(Save(Inp_Name, Inp_Score));
 
 			
 		}		
@@ -76,16 +76,16 @@ void Score::Write(std::string Inp_Name)
 	
 	
 
-	for (int i = 0; i < TopSize; i++)
+	for (int i = 0; i < m_TopSize; i++)
 	{
-		if (Top[i].Score <= m_Points)
+		if (m_Top[i].Score <= m_Points)
 		{
 			//delete last score
-			if (Top.size() == TopSize)
-			Top.pop_back();
+			if (m_Top.size() == m_TopSize)
+			m_Top.pop_back();
 			
 			//write the new score
-			auto it = Top.emplace(Top.begin() + i, Save(Inp_Name, m_Points));
+			auto it = m_Top.emplace(m_Top.begin() + i, Save(Inp_Name, m_Points));
 			break;
 		}
 	}
@@ -103,15 +103,15 @@ void Score::Write(std::string Inp_Name)
 	else
 	{
 		//write the score list
-		for (int i = 0; i < Top.size(); i++)
+		for (int i = 0; i < m_Top.size(); i++)
 		{
-			if (Top[i].Score < 0)
+			if (m_Top[i].Score < 0)
 				break;
 
-			if(i == Top.size()-1)
-				output << Top[i].Name << ' ' << Top[i].Score;
+			if(i == m_Top.size()-1)
+				output << m_Top[i].Name << ' ' << m_Top[i].Score;
 			else
-				output << Top[i].Name << ' ' << Top[i].Score << endl;
+				output << m_Top[i].Name << ' ' << m_Top[i].Score << endl;
 		}	
 			
 	}

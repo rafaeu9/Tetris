@@ -24,7 +24,10 @@ Game::~Game()
 
 void Game::PlayGame()
 {
+	
 	 m_Map.Create();
+
+	 //Map Keys Display
 	 string m_Message;
 	 m_Message = "Keys:";
 	 m_Display.WriteMenssage(Coordinate(m_MapWidth + 2, 2), m_Message);
@@ -64,6 +67,7 @@ void Game::Start()
 
 	string m_Message;
 
+
 	cout << "####### ####### ####### ######    ###    #####\n";
 	cout << "   #    #          #    #     #    #    #     #\n";
 	cout << "   #    #          #    #     #    #    #\n";
@@ -77,12 +81,12 @@ void Game::Start()
 	m_Message = "Top:";
 	m_Display.WriteMenssage(Coordinate(50, 0), m_Message);
 
-	for (int i = 0; i < m_Score.Top.size(); i++)
+	for (int i = 0; i < m_Score.m_Top.size(); i++)
 	{
-		if (m_Score.Top[i].Score < 0)
+		if (m_Score.m_Top[i].Score < 0)
 			break;
 		std::stringstream oss;
-		oss << i+1 << ' ' << m_Score.Top[i].Name << ' ' << m_Score.Top[i].Score;
+		oss << i+1 << ' ' << m_Score.m_Top[i].Name << ' ' << m_Score.m_Top[i].Score;
 
 
 		m_Message = oss.str();
