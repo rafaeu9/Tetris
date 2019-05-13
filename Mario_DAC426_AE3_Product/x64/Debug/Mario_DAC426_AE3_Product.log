@@ -1,11 +1,8 @@
 ﻿  Game.cpp
 c:\users\rafae\source\repos\rafaeu9\mario_dac426_ae3_product\mario_dac426_ae3_product\shapes.h(60): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-c:\users\rafae\source\repos\rafaeu9\mario_dac426_ae3_product\mario_dac426_ae3_product\game.cpp(35): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+c:\users\rafae\source\repos\rafaeu9\mario_dac426_ae3_product\mario_dac426_ae3_product\game.cpp(47): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
   Main.cpp
 c:\users\rafae\source\repos\rafaeu9\mario_dac426_ae3_product\mario_dac426_ae3_product\shapes.h(60): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  Save.cpp
   Score.cpp
-  Shapes.cpp
-c:\users\rafae\source\repos\rafaeu9\mario_dac426_ae3_product\mario_dac426_ae3_product\shapes.h(60): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   Generating Code...
 Tester.obj : fatal error LNK1112: module machine type 'x86' conflicts with target machine type 'x64'

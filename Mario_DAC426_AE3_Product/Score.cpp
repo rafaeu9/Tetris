@@ -39,7 +39,7 @@ void Score::Load()
 
 	int Inp_Score;
 
-	string text_from_file;
+	
 
 	ifstream	input;
 
@@ -56,6 +56,8 @@ void Score::Load()
 			if (input.eof())
 				break;
 
+			string text_from_file;
+
 			getline(input, text_from_file);
 
 			stringstream ss{ text_from_file };
@@ -64,7 +66,6 @@ void Score::Load()
 			ss >> Inp_Name >> Inp_Score;
 
 			m_Top.push_back(Save(Inp_Name, Inp_Score));
-
 			
 		}		
 	
